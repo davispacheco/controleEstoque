@@ -1,5 +1,6 @@
 package com.modulo5.controleEstoque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,4 +33,8 @@ public class ClienteModel implements Serializable {
     private String cpf;
 
     private LocalDateTime dataCadastro;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<EnderecoModel> enderecos = new ArrayList<>();
 }
