@@ -15,27 +15,27 @@ public class PrecoController {
     @Autowired
     private PrecoService precoService;
 
-    @GetMapping(path = "/precos")
+    @GetMapping(path = "/controle_estoque/precos")
     public ResponseEntity<List<PrecoModel>> buscarTodosPrecos() {
         return ResponseEntity.ok(precoService.buscarTodos());
     }
 
-    @GetMapping(path = "/precos/{codigo}")
+    @GetMapping(path = "/controle_estoque/precos/{codigo}")
     public ResponseEntity<Optional<PrecoModel>> buscarPrecoPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(precoService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/precos")
+    @PostMapping(path = "/controle_estoque/precos")
     public ResponseEntity<PrecoModel> cadastrarPreco(@RequestBody PrecoModel precoModel) {
         return new ResponseEntity<>(precoService.cadastrar(precoModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/precos/{codigo}")
+    @PutMapping(path = "/controle_estoque/precos/{codigo}")
     public ResponseEntity<PrecoModel> alterarPreco(@RequestBody PrecoModel precoModel, @PathVariable Long codigo) {
-        return ResponseEntity.ok(precoService.alterar(precoModel));
+        return ResponseEntity.ok(precoService.alterar(precoModel, codigo));
     }
 
-    @DeleteMapping(path = "/precos/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/precos/{codigo}")
     public ResponseEntity<?> deletarPreco(@PathVariable Long codigo) {
         precoService.deletar(codigo);
         return ResponseEntity.noContent().build();

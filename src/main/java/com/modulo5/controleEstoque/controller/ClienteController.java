@@ -15,27 +15,27 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping(path = "/clientes")
+    @GetMapping(path = "/controle_estoque/clientes")
     public ResponseEntity<List<ClienteModel>> buscarTodosClientes() {
         return ResponseEntity.ok(clienteService.buscarTodos());
     }
 
-    @GetMapping(path = "/clientes/{codigo}")
+    @GetMapping(path = "/controle_estoque/clientes/{codigo}")
     public ResponseEntity<Optional<ClienteModel>> buscarClientePorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(clienteService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/clientes")
+    @PostMapping(path = "/controle_estoque/clientes")
     public ResponseEntity<ClienteModel> cadastrarCliente(@RequestBody ClienteModel clienteModel) {
         return new ResponseEntity<>(clienteService.cadastrar(clienteModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/clientes/{codigo}")
+    @PutMapping(path = "/controle_estoque/clientes/{codigo}")
     public ResponseEntity<ClienteModel> alterarCliente(@RequestBody ClienteModel clienteModel, @PathVariable Long codigo) {
         return ResponseEntity.ok(clienteService.alterar(clienteModel, codigo));
     }
 
-    @DeleteMapping(path = "/clientes/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/clientes/{codigo}")
     public ResponseEntity<?> deletarCliente(@PathVariable Long codigo) {
         clienteService.deletar(codigo);
         return ResponseEntity.noContent().build();

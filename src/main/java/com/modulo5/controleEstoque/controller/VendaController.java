@@ -15,27 +15,27 @@ public class VendaController {
     @Autowired
     private VendaService vendaService;
 
-    @GetMapping(path = "/vendas")
+    @GetMapping(path = "/controle_estoque/vendas")
     public ResponseEntity<List<VendaModel>> buscarTodasVendas() {
         return ResponseEntity.ok(vendaService.buscarTodas());
     }
 
-    @GetMapping(path = "/vendas/{codigo}")
+    @GetMapping(path = "/controle_estoque/vendas/{codigo}")
     public ResponseEntity<Optional<VendaModel>> buscarVendaPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(vendaService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/vendas")
+    @PostMapping(path = "/controle_estoque/vendas")
     public ResponseEntity<VendaModel> cadastrarVenda(@RequestBody VendaModel vendaModel) {
         return new ResponseEntity<>(vendaService.cadastrar(vendaModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/vendas/{codigo}")
+    @PutMapping(path = "/controle_estoque/vendas/{codigo}")
     public ResponseEntity<VendaModel> alterarVenda(@RequestBody VendaModel vendaModel, @PathVariable Long codigo) {
         return ResponseEntity.ok(vendaService.alterar(vendaModel, codigo));
     }
 
-    @DeleteMapping(path = "/vendas/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/vendas/{codigo}")
     public ResponseEntity<?> deletarVenda(@PathVariable Long codigo) {
         vendaService.deletar(codigo);
         return ResponseEntity.noContent().build();

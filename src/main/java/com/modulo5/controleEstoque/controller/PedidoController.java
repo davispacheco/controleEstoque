@@ -15,27 +15,27 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @GetMapping(path = "/pedidos")
+    @GetMapping(path = "/controle_estoque/pedidos")
     public ResponseEntity<List<PedidoModel>> buscarTodosPedidos() {
         return ResponseEntity.ok(pedidoService.buscarTodos());
     }
 
-    @GetMapping(path = "/pedidos/{codigo}")
+    @GetMapping(path = "/controle_estoque/pedidos/{codigo}")
     public ResponseEntity<Optional<PedidoModel>> buscarPedidoPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(pedidoService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/pedidos")
+    @PostMapping(path = "/controle_estoque/pedidos")
     public ResponseEntity<PedidoModel> cadastrarPedido(@RequestBody PedidoModel pedidoModel) {
         return new ResponseEntity<>(pedidoService.cadastrar(pedidoModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/pedidos/{codigo}")
+    @PutMapping(path = "/controle_estoque/pedidos/{codigo}")
     public ResponseEntity<PedidoModel> alterarPedido(@RequestBody PedidoModel pedidoModel, @PathVariable Long codigo) {
-        return ResponseEntity.ok(pedidoService.alterar(pedidoModel));
+        return ResponseEntity.ok(pedidoService.alterar(pedidoModel, codigo));
     }
 
-    @DeleteMapping(path = "/pedidos/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/pedidos/{codigo}")
     public ResponseEntity<?> deletarPedido(@PathVariable Long codigo) {
         pedidoService.deletar(codigo);
         return ResponseEntity.noContent().build();

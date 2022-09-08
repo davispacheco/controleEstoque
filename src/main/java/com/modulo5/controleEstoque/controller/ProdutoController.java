@@ -15,27 +15,27 @@ public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
-    @GetMapping(path = "/produtos")
+    @GetMapping(path = "/controle_estoque/produtos")
     public ResponseEntity<List<ProdutoModel>> buscarTodosProdutos() {
         return ResponseEntity.ok(produtoService.buscarTodos());
     }
 
-    @GetMapping(path = "/produtos/{codigo}")
+    @GetMapping(path = "/controle_estoque/produtos/{codigo}")
     public ResponseEntity<Optional<ProdutoModel>> buscarProdutoPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(produtoService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/produtos")
+    @PostMapping(path = "/controle_estoque/produtos")
     public ResponseEntity<ProdutoModel> cadastrarProduto(@RequestBody ProdutoModel produtoModel) {
         return new ResponseEntity<>(produtoService.cadastrar(produtoModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/produtos/{codigo}")
+    @PutMapping(path = "/controle_estoque/produtos/{codigo}")
     public ResponseEntity<ProdutoModel> alterarProduto(@RequestBody ProdutoModel produtoModel, @PathVariable Long codigo) {
-        return ResponseEntity.ok(produtoService.alterar(produtoModel));
+        return ResponseEntity.ok(produtoService.alterar(produtoModel, codigo));
     }
 
-    @DeleteMapping(path = "/produtos/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/produtos/{codigo}")
     public ResponseEntity<?> deletarProduto(@PathVariable Long codigo) {
         produtoService.deletar(codigo);
         return ResponseEntity.noContent().build();

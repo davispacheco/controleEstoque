@@ -30,4 +30,8 @@ public class PedidoModel {
     @JsonIgnore
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedidoModel> ItensPedido = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "produto_codigo", referencedColumnName = "codigo")
+    private ProdutoModel produto;
 }

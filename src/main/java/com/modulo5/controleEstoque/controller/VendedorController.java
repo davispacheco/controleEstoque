@@ -15,27 +15,27 @@ public class VendedorController {
     @Autowired
     private VendedorService vendedorService;
 
-    @GetMapping(path = "/vendedores")
+    @GetMapping(path = "/controle_estoque/vendedores")
     public ResponseEntity<List<VendedorModel>> buscarTodasVendas() {
         return ResponseEntity.ok(vendedorService.buscarTodos());
     }
 
-    @GetMapping(path = "/vendedores/{codigo}")
+    @GetMapping(path = "/controle_estoque/vendedores/{codigo}")
     public ResponseEntity<Optional<VendedorModel>> buscarVendaPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(vendedorService.buscarPorId(codigo));
     }
 
-    @PostMapping(path = "/vendedores")
+    @PostMapping(path = "/controle_estoque/vendedores")
     public ResponseEntity<VendedorModel> cadastrarVendedor(@RequestBody VendedorModel vendedorModel) {
         return new ResponseEntity<>(vendedorService.cadastrar(vendedorModel), HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/vendedores/{codigo}")
+    @PutMapping(path = "/controle_estoque/vendedores/{codigo}")
     public ResponseEntity<VendedorModel> alterarVendedor(@RequestBody VendedorModel vendedorModel, @PathVariable Long codigo) {
         return ResponseEntity.ok(vendedorService.alterar(vendedorModel, codigo));
     }
 
-    @DeleteMapping(path = "/vendedores/{codigo}")
+    @DeleteMapping(path = "/controle_estoque/vendedores/{codigo}")
     public ResponseEntity<?> deletarVendedor(@PathVariable Long codigo) {
         vendedorService.deletar(codigo);
         return ResponseEntity.noContent().build();
