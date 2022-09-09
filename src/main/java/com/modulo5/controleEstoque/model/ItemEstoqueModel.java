@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "estoques")
+@Table(name = "itens_estoque")
 public class ItemEstoqueModel implements Serializable {
     @Id
     private Long codigo;
