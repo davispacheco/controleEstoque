@@ -40,5 +40,4 @@ public class ClienteModel implements Serializable {
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<PedidoModel> pedidos = new ArrayList<>();
->>>>>>> fcfa20f8452ced0c43aa540db552a9acce171df6
 }
