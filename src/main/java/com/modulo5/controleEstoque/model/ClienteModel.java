@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -35,5 +36,9 @@ public class ClienteModel implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<PedidoModel> pedidos;
+    private List<EnderecoModel> enderecos = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<PedidoModel> pedidos = new ArrayList<>();
 }

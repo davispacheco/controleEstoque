@@ -21,13 +21,22 @@ public class EnderecoModel {
     @Column(length = 20, nullable = false)
     private String logradouro;
 
+    @Column(length = 3, nullable = false)
     private String numero;
 
+    @Column(length = 20, nullable = false)
     private String bairro;
 
+    @Column(length = 8, nullable = false)
     private String cep;
 
+    @Column(length = 20, nullable = false)
     private String cidade;
 
+    @Column(length = 20, nullable = false)
     private String estado;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_codigo", referencedColumnName = "codigo")
+    private ClienteModel cliente;
 }
