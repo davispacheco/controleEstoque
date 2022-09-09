@@ -32,6 +32,6 @@ public class PedidoModel {
     private List<ItemPedidoModel> ItensPedido = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "produto_codigo", referencedColumnName = "codigo")
-    private ProdutoModel produto;
+    @JoinColumn(name = "cliente_codigo", referencedColumnName = "codigo")
+    private ClienteModel cliente;
 }
