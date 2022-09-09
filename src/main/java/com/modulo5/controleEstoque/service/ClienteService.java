@@ -1,5 +1,6 @@
 package com.modulo5.controleEstoque.service;
 
+import com.modulo5.controleEstoque.DTO.ClienteDTO;
 import com.modulo5.controleEstoque.model.ClienteModel;
 import com.modulo5.controleEstoque.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public List<ClienteModel> buscarTodos() {
+    public List<ClienteDTO> buscarTodos() {
         return clienteRepository.findAll();
     }
 

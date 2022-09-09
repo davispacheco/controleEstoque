@@ -1,5 +1,6 @@
 package com.modulo5.controleEstoque.controller;
 
+import com.modulo5.controleEstoque.DTO.ClienteDTO;
 import com.modulo5.controleEstoque.model.ClienteModel;
 import com.modulo5.controleEstoque.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping(path = "/controle_estoque/clientes")
-    public ResponseEntity<List<ClienteModel>> buscarTodosClientes() {
+    public ResponseEntity<List<ClienteDTO>> buscarTodosClientes() {
         return ResponseEntity.ok(clienteService.buscarTodos());
     }
 
