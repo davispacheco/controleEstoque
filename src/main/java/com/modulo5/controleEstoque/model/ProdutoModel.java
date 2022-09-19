@@ -33,6 +33,11 @@ public class ProdutoModel implements Serializable {
     @JoinColumn(name = "preco_codigo", referencedColumnName = "codigo")
     private PrecoModel preco;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<ItemPedidoModel> itensPedido = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<ItemEstoqueModel> itemsEstoque = new ArrayList<>();
 }

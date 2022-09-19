@@ -1,5 +1,6 @@
 package com.modulo5.controleEstoque.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class VendedorModel implements Serializable {
 
     private LocalDateTime dataCadastro;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "vendedor", cascade = CascadeType.ALL)
     private List<VendaModel> vendas = new ArrayList<>();
 }
